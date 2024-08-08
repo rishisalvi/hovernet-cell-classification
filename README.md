@@ -1,7 +1,7 @@
 # Using Hovernet for Cell Classification of Lung Cancer Tissue
 Link: [https://github.com/vqdang/hover_net?tab=readme-ov-file](https://github.com/vqdang/hover_net)
 
-#Things done: 
+Things done: 
 1. Training the Hovernet model on the Pannuke dataset
 2. Importing images/annotations into QuPat
 3. Manually ading two more classes to the annotations
@@ -9,14 +9,14 @@ Link: [https://github.com/vqdang/hover_net?tab=readme-ov-file](https://github.co
 5. Extracting patches from the .mat files
 6. Training the model on the updated dataset
 
-#Things to be done: 
+Things to be done: 
 1. Fix the QuPath annotations (end up with only 7 classes, necrosis -> no label)
 2. Change dataset.py to have a Pannuke dataset class with 7 options
 3. Change nr_types in config.py
 4. Fix .geojson to .mat file conversion (check .mat file contents)
 5. Fix errors when training the model
 
-#Files changed from default: 
+Files changed from default: 
 1. extract_patches.py: changed file paths, I/O, image resizing
 2. config.py: changed file paths
 3. opt.py: changed file paths
