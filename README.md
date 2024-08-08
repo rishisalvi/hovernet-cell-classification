@@ -20,3 +20,4 @@ Files changed from default:
 1. extract_patches.py: changed file paths, I/O, image resizing
 2. config.py: changed file paths
 3. opt.py: changed file paths
+4. image_alignment.ipynb: runs all of the code for the things mentioned
