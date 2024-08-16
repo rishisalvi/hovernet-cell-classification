@@ -14,11 +14,30 @@ class __AbstractDataset(object):
     def load_img(self, path):
         raise NotImplementedError
 
-    def load_ann(self, path, with_type=False):
+    def load_ann(self, path, with_type=True):   
         raise NotImplementedError
 
 
 ####
+class __Pannuke(__AbstractDataset):
+    """Defines the Pannuke dataset from which the images were originally trained on before
+    classes were added
+    """
+
+    def load_img(self, path):
+        return cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB)
+
+    def load_ann(self, path, with_type=True):
+        # Load data from .mat file
+        data = sio.loadmat(path)
+        inst_map = data["inst_map"]
+        type_map = data["type_map"]
+
+        # Stack instance map and type map
+        return np.dstack([inst_map, type_map])
+
+
+
 class __Kumar(__AbstractDataset):
     """Defines the Kumar dataset as originally introduced in:
 
@@ -99,6 +118,7 @@ class __CoNSeP(__AbstractDataset):
 def get_dataset(name):
     """Return a pre-defined dataset object associated with `name`."""
     name_dict = {
+        "pannuke": lambda: __Pannuke(),
         "kumar": lambda: __Kumar(),
         "cpm17": lambda: __CPM17(),
         "consep": lambda: __CoNSeP(),
